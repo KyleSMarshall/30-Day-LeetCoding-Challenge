@@ -10,7 +10,7 @@ Output: 3
 Explanation: 0, 1 and 2 are counted cause 1, 2 and 3 are in arr.
 '''
 
-# Solution
+# Solution: O(n) time complexity
 class Solution:
     def countElements(self, arr: List[int]) -> int:
     '''
@@ -33,14 +33,10 @@ class Solution:
         # Initialize the output result to 0
         res = 0
         
-        # Make a list of keys and sort
-        keys = [key for key in d.keys()]
-        keys.sort()
-        
         # Loop through the keys and count the valid values
-        for i in range(1, len(keys)):
-            if keys[i] == keys[i-1] + 1:
-                res += d[keys[i-1]]
+        for key in d.keys():
+            if key + 1 in d:
+                res += d[key]
         
         return res
         
